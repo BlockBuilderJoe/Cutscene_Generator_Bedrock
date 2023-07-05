@@ -35,7 +35,6 @@ while counter <= cutscene_length:
 
 command_list.insert(0, f"scoreboard players add @p count 1") # writes the counter line to the beginning of the function.
 command_list.append(f"execute if score @p count matches {counter + 10} run setblock {trigger_block} air 0") # Stops the counter by adding a replacing the redstone block with air. 
-command_list.append(f"execute if score @p count matches {counter + 10} run scoreboard players reset @p count") # Resets the counter to 0.
     
 
 with open(f"{cutscene_name}.mcfunction", "w") as file: 
