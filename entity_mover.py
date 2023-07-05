@@ -1,4 +1,5 @@
 import os
+
 ######## Variables to change for the movement ###############################
 movement_length = 3 # sets the length of the movement in seconds.
 start_x, start_y, start_z = 10, 68, -121 # sets the start position of the movement.
@@ -15,6 +16,8 @@ count_start = 0 # sets the starting value of the counter. Useful for when you wa
 command_list = [] # creates a list to store the commands in.
 movement_length = movement_length * 20 # converts the length of the movement from seconds to ticks
 counter = count_start # sets the counter to 0
+#get the script location
+script_location = os.path.dirname(os.path.realpath(__file__))
 
 #delete existing function
 try:
@@ -38,5 +41,5 @@ command_list.insert(0, f"scoreboard players add @p count 1") # writes the counte
 command_list.append(f"execute if score @p count matches {counter + 10} run setblock {trigger_block} air 0") # Stops the counter by adding a replacing the redstone block with air. 
     
 
-with open(f"{movement_name}.mcfunction", "w") as file: 
+with open(f"{script_location}/{movement_name}.mcfunction", "w") as file: 
     file.write("\n".join(command_list)) #Writes the command list to a .mcfunction file with the name of the movement.
