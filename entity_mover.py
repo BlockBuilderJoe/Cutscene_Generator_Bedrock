@@ -7,12 +7,14 @@ movement_name = "movement" # sets the name of the file.
 tp_rate = 1 # sets the rate at which the camera moves by tp'ing the character.
 trigger_block = "14 68 -124" #the xyz of the redstone block that triggers the movement. 
 entity_tag = "tag"
+count_start = 0 # sets the starting value of the counter. Useful for when you want to have complex paths or multiple movements.
+
 
 ########## Code that generates the movement #################################
 
 command_list = [] # creates a list to store the commands in.
 movement_length = movement_length * 20 # converts the length of the movement from seconds to ticks
-counter = 0 # sets the counter to 0
+counter = count_start # sets the counter to 0
 
 #delete existing function
 try:

@@ -6,13 +6,14 @@ end_x, end_y, end_z = -21, 101, -92 # sets the end position of the cutscene.
 focus_x, focus_y, focus_z = 0, 104, -138 # sets the focus point of the cutscene.
 cutscene_name = "cutscene" # sets the name of the cutscene.
 tp_rate = 1 # sets the rate at which the camera moves by tp'ing the character.
-trigger_block = "14 68 -124" #the xyz of the redstone block that triggers the cutscene. 
+trigger_block = "14 68 -124" #the xyz of the redstone block that triggers the cutscene.
+count_start = 0 # sets the starting value of the counter. Useful for when you want to have complex paths. 
 
 ########## Code that generates the cutscene #################################
 
 command_list = [] # creates a list to store the commands in.
-cutscene_length = cutscene_length * 20 # converts the length of the cutscene from seconds to ticks
-counter = 0 # sets the counter to 0
+cutscene_length = cutscene_length * 20 # converts the length of the cutscene from seconds to ticks.
+counter = count_start # sets the counter to the value of count_start.
 
 #delete existing function
 try:
