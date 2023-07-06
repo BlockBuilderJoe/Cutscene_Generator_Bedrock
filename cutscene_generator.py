@@ -29,7 +29,7 @@ cutscene_function = os.path.join(location_of_function_folder, location_of_functi
 setblock_function = os.path.join(location_of_function_folder, location_of_function, "setblock.mcfunction")
 trigger_function = os.path.join(location_of_function_folder, location_of_function, "trigger.mcfunction")
 
-def write_function(tick_count, start_x, start_y, start_z, end_x, end_y, end_z, focus_x, focus_y, focus_z, block_distance, function_name, cutscene_function, setblock_function, trigger_function): 
+def write_function(tick_count, start_x, start_y, start_z, end_x, end_y, end_z, focus_x, focus_y, focus_z, block_distance, location_of_function, cutscene_function, setblock_function, trigger_function): 
     # Calculate the distance between the start and end coordinates
     distance_x = end_x - start_x
     distance_y = end_y - start_y
@@ -63,6 +63,11 @@ def write_function(tick_count, start_x, start_y, start_z, end_x, end_y, end_z, f
     #writes the command list to a .mcfunction file with the name of the cutscene.
     with open(cutscene_function, "w") as file:
         file.write("\n".join(command))
+
+    #tests to see if the location_of_function contains \ if so it is a windows system and replaces them with /.
+    if "\\" in location_of_function:
+        location_of_function = location_of_function.replace("\\", "/")
+
     #generates a trigger function that will trigger the setblock command function.
     trigger = f"scoreboard players reset @p count\ntp @p {start_x} {start_y} {start_z} facing {focus_x} {focus_y} {focus_z}\nschedule on_area_loaded add {start_x} {start_y} {start_z} {start_x} {start_y} {start_z} {location_of_function}/setblock \n  "
     with open(trigger_function, "w") as file:
