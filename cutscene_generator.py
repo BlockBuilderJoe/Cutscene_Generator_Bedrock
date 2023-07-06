@@ -16,7 +16,7 @@ location_of_function = "Story2/Cutscene" #where in the function folder you want 
 function_name = "cutscene"
 
 #Are you adding to an existing function?
-add_to_existing_function = True #set to True if you want to add to an existing function.
+add_to_existing_function = False #set to True if you want to add to an existing function.
 
 ################### Don't change anything below this line #######################################################################
 
