@@ -4,15 +4,15 @@
 block_distance = 0.1 # Lower is slower but smoother. Higher is faster but more jittery. Adjust to your liking.
 
 #Coordinates
-start_x, start_y, start_z = -186, -58, -74 # sets the start position of the cutscene.
-end_x, end_y, end_z = -187, -58, -18 # sets the end position of the cutscene.
+start_x, start_y, start_z = -162, -33, -171 # sets the start position of the cutscene.
+end_x, end_y, end_z = -183, -58, -88 # sets the end position of the cutscene.
 trigger_block = "77 -63 -62" # DON'T PUT COMMA'S IN THE COORDINATES.the xyz of the redstone block that triggers the cutscene.
 
 #npc tag
 tag = "two"
 
 #Where to write on your system
-location_of_function_folder = "/Users/meganindia/Library/Application Support/minecraftpe/games/com.mojang/development_behavior_packs/InfoQuest BP/functions" #the location of the behaviour pack function folder.
+location_of_function_folder = "/Users/joe/Library/Application Support/minecraftpe/games/com.mojang/development_behavior_packs/InfoQuest BP/functions" #the location of the behaviour pack function folder.
 location_of_function = "NPC_Run" #where in the function folder you want the function to be written.
 function_name = "movement"
 
