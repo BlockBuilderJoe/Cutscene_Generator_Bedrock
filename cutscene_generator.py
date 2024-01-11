@@ -4,17 +4,17 @@
 block_distance = 0.80 # Lower is slower but smoother. Higher is faster but more jittery. Adjust to your liking.
 
 #Coordinates
-start_x, start_y, start_z = -162, -33, -171 # sets the start position of the cutscene.
-end_x, end_y, end_z = -183, -58, -88  # sets the end position of the cutscene.
-focus_x, focus_y, focus_z = -183, -58, -82 # direction to face 
-trigger_block = "83 -63 -75" # DON'T PUT COMMA'S IN THE COORDINATES.the xyz of the redstone block that triggers the cutscene.
+start_x, start_y, start_z = -22, 92, -7 # sets the start position of the cutscene.
+end_x, end_y, end_z = 130, 86, -2  # sets the end position of the cutscene.
+focus_x, focus_y, focus_z = 140, 86, -2 # direction to face 
+trigger_block = "-14 69 18" # DON'T PUT COMMA'S IN THE COORDINATES.the xyz of the redstone block that triggers the cutscene.
 return_coordinate = "-183 -58 -88 facing -183 -58 -82" # DON'T PUT COMMA'S IN THE COORDINATES. The place you want the player to return to after the cutscene.
 tick_count = 40 # When do you want the cutscene to start (in ticks)
 
 #Where to write on your system
-location_of_function_folder = "/Users/joe/Library/Application Support/minecraftpe/games/com.mojang/development_behavior_packs/InfoQuest BP/functions" #the location of the behaviour pack function folder.
+location_of_function_folder = "/Users/joe/Library/Application Support/minecraftpe/games/com.mojang/development_behavior_packs/cadw_bp/functions" #the location of the behaviour pack function folder.
 location_of_function = "Intro" #where in the function folder you want the function to be written.
-function_name = "cutscene"
+function_name = "new_cutscene"
 
 #Are you adding to an existing function?
 add_to_existing_function = False #set to True if you want to add to an existing function.
@@ -69,7 +69,7 @@ def write_function(tick_count, start_x, start_y, start_z, end_x, end_y, end_z, f
         command.append(f"execute if score @p count matches {tick_count} run tp @p {x} {y} {z} facing {focus_x} {focus_y} {focus_z}")
     
     command.insert(0, f"scoreboard players add @p count 1") # writes the counter line to the beginning of the function.
-    command.append(f"execute if score @p count matches {tick_count + 10} run setblock {trigger_block} air 0") # Stops the counter by adding a replacing the redstone block with air. 
+    command.append(f"execute if score @p count matches {tick_count + 10} run setblock {trigger_block} air") # Stops the counter by adding a replacing the redstone block with air. 
     command.append(f"execute if score @p count matches {tick_count + 10} run tp @p {return_coordinate}") # returns the player to the return coordinate.
     
     #writes the command list to a .mcfunction file with the name of the cutscene.
@@ -85,7 +85,7 @@ def write_function(tick_count, start_x, start_y, start_z, end_x, end_y, end_z, f
     with open(trigger_function, "w") as file:
         file.write(trigger)
     #generates a setblock function that will trigger the cutscene.
-    setblock = f"setblock {trigger_block} redstone_block 0"
+    setblock = f"setblock {trigger_block} redstone_block"
     with open(setblock_function, "w") as file:
         file.write(setblock)
 
@@ -137,7 +137,7 @@ def append_function(tick_count, start_x, start_y, start_z, end_x, end_y, end_z, 
         
     command.insert(0, f"scoreboard players add @p count 1") # writes the counter line to the beginning of the function.
     command.append(f"execute if score @p count matches {tick_count + 5} run tp @p {return_coordinate}") # Stops the counter by adding a replacing the redstone block with air. 
-    command.append(f"execute if score @p count matches {tick_count + 10} run setblock {trigger_block} air 0") # Stops the counter by adding a replacing the redstone block with air. 
+    command.append(f"execute if score @p count matches {tick_count + 10} run setblock {trigger_block} air") # Stops the counter by adding a replacing the redstone block with air. 
     
     #writes the command list to a .mcfunction file with the name of the cutscene.
     with open(cutscene_function, "w") as file:
